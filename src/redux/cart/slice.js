@@ -31,7 +31,6 @@ const cartSlice = createSlice({
         state.items.push({ ...payload, orderedQuantity: 1 });
       })
       .addCase(changeOrderedQuantity, (state, { payload }) => {
-        console.log({ payload });
         const indx = state.items.findIndex(({ _id }) => _id === payload._id);
         state.items[indx].orderedQuantity = payload.orderedQuantity;
       })
@@ -40,7 +39,6 @@ const cartSlice = createSlice({
         state.items.splice(indx, 1);
       })
       .addCase(changeUserInfo, (state, { payload }) => {
-        console.log({ payload });
         state.userInfo = payload;
       })
       .addCase(makeOrder.pending, (state, { payload }) => {

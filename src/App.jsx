@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
 import SharedLayout from './shared/components/SharedLayout/';
+import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 
 const App = () => {
   const HomePage = lazy(() => import('./pages/HomePage'));
@@ -23,6 +24,7 @@ const App = () => {
         </Route>
         <Route path="cart" element={<CartPage />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };

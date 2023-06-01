@@ -19,6 +19,7 @@ export const OrderList = styled.ul`
     width: 4px;
     background-color: transparent;
   }
+
   &::-webkit-scrollbar-thumb {
     background-color: #2e2e2e70;
     border-radius: 2px;
