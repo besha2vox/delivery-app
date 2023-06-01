@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 
@@ -8,10 +8,13 @@ import { BackDrop, ModalWrapper, CloseButton } from './Modal.styled';
 const modalContainer = document.getElementById('modal-root');
 
 const Modal = ({ children, handleClick }) => {
-  const handleCloseOnEsc = e => {
-    if (e.code !== 'Escape') return;
-    handleClick();
-  };
+  const handleCloseOnEsc = useCallback(
+    e => {
+      if (e.code !== 'Escape') return;
+      handleClick();
+    },
+    [handleClick]
+  );
 
   const handleCloseBackdropClick = e => {
     if (e.target !== e.currentTarget) return;
@@ -22,7 +25,7 @@ const Modal = ({ children, handleClick }) => {
     window.addEventListener('keydown', handleCloseOnEsc);
 
     return () => window.removeEventListener('keydown', handleCloseOnEsc);
-  }, []);
+  }, [handleCloseOnEsc]);
 
   return createPortal(
     <BackDrop onClick={handleCloseBackdropClick}>
