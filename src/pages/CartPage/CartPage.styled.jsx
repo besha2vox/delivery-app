@@ -14,3 +14,7 @@ export const FormWrapper = styled.div`
   gap: 12px;
   height: 80%;
 `;
+
+export const EmptyCartText = styled.p`
+  text-align: center;
+`;

@@ -7,15 +7,17 @@ import {
   selectCartList,
   selectOrderPrice,
   selectUserInfo,
+  selectIsOrderLoading,
 } from 'redux/cart/selectors';
 
+import Loader from 'shared/components/Loader/Loader';
 import Modal from 'shared/components/Modal/Modal';
 import OrderModal from 'shared/components/OrderModal/OrderModal';
 import Title from 'shared/components/Title/Title';
 import CartList from 'shared/components/CartList';
 import OrderedForm from 'shared/components/OrderedForm/OrderedForm';
 import OrderSubmit from 'shared/components/OrderSubmit/OrderSubmit';
-import { CartForm, FormWrapper } from './CartPage.styled';
+import { CartForm, FormWrapper, EmptyCartText } from './CartPage.styled';
 
 const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,6 +25,7 @@ const CartPage = () => {
   const orderlist = useSelector(selectCartList);
   const totalPrice = useSelector(selectOrderPrice);
   const user = useSelector(selectUserInfo);
+  const isLoading = useSelector(selectIsOrderLoading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -53,9 +56,10 @@ const CartPage = () => {
           <OrderSubmit />
         </CartForm>
       ) : (
-        <p>Ваш кошик пустий</p>
+        <EmptyCartText>Ваш кошик пустий</EmptyCartText>
       )}
-      {isModalOpen && (
+      {isLoading && <Loader />}
+      {!isLoading && isModalOpen && (
         <Modal handleClick={closeModal}>
           <OrderModal />
         </Modal>

@@ -13,3 +13,5 @@ export const selectOrderPrice = state =>
   }, 0);
 
 export const selectUserInfo = state => state.cart.userInfo;
+
+export const selectIsOrderLoading = state => state.cart.isLoading;

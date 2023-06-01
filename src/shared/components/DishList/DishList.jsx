@@ -2,14 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getByCategory } from '../../../redux/menu/operations';
-import {
-  selectMenu,
-  // selectMenuIsLoading,
-  // selectMenuError,
-} from '../../../redux/menu/selectors';
+import { selectMenu, selectMenuIsLoading } from '../../../redux/menu/selectors';
 import { selectCurrentShop } from '../../../redux/shops/selectors';
 import { addToCart } from 'redux/cart/operations';
 
+import Loader from '../Loader/Loader';
 import Button from '../Button/Button';
 import {
   DishListStyled,
@@ -23,8 +20,7 @@ const DishList = () => {
   const menu = useSelector(selectMenu);
   const currentShop = useSelector(selectCurrentShop);
 
-  // const isLoading = useSelector(selectMenuIsLoading);
-  // const error = useSelector(selectMenuError);
+  const isLoading = useSelector(selectMenuIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -66,6 +62,7 @@ const DishList = () => {
           </DishItem>
         ))}
       </DishListStyled>
+      {isLoading && <Loader />}
     </>
   );
 };
