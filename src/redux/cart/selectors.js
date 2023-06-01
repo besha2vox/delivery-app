@@ -11,3 +11,5 @@ export const selectOrderPrice = state =>
     acc += price * orderedQuantity;
     return acc;
   }, 0);
+
+export const selectUserInfo = state => state.cart.userInfo;

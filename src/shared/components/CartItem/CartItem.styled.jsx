@@ -1,22 +1,13 @@
 import styled from 'styled-components';
 
-export const OrderList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  width: 100%;
-  max-height: 100%;
-  overflow: auto;
-`;
-
 export const OrderItem = styled.li`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
-  padding: 4px 12px;
+  padding: 24px 12px;
   width: 100%;
-  border-bottom: 1px solid #2e2e2e50;
+  border: 1px solid #2e2e2e50;
   border-radius: 40px;
 
   & img {
@@ -29,9 +20,10 @@ export const OrderInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
-  gap: 8px;
+  gap: 12px;
   height: 100%;
+
+  text-align: center;
 `;
 
 export const OrderedQuantityWrapper = styled.div`
@@ -39,24 +31,6 @@ export const OrderedQuantityWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
-`;
-
-export const OrderedQuantityButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4px;
-
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
-  transition: color 300ms ease-in-out, box-shadow 300ms ease-in-out;
-
-  &:hover {
-    color: #f09440;
-    box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
-  }
 `;
 
 export const RemoveButton = styled.button`
@@ -77,5 +51,20 @@ export const RemoveButton = styled.button`
 
   &:hover {
     color: #d10f0f;
+  }
+`;
+
+export const OrderedQuantityInput = styled.input`
+  width: 200px;
+  padding: 4px 12px;
+  text-align: center;
+
+  border: 1px solid #2e2e2e50;
+  border-radius: 40px;
+  outline: none;
+  transition: border-color 300ms ease-in-out;
+
+  &:focus {
+    border-color: #f09440;
   }
 `;
