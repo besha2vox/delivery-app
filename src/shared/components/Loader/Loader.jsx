@@ -1,8 +1,11 @@
+import { createPortal } from 'react-dom';
 import { Oval } from 'react-loader-spinner';
 import { LoaderWrapper } from './Loader.styled';
 
+const modalContainer = document.getElementById('modal-root');
+
 const Loader = () => {
-  return (
+  return createPortal(
     <LoaderWrapper>
       <Oval
         height={80}
@@ -16,7 +19,8 @@ const Loader = () => {
         strokeWidth={2}
         strokeWidthSecondary={2}
       />
-    </LoaderWrapper>
+    </LoaderWrapper>,
+    modalContainer
   );
 };
 

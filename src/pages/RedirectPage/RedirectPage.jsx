@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const NotFoundPage = () => {
+const RedirectPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate('/');
+    navigate('/shop');
   }, [navigate]);
 };
 
-export default NotFoundPage;
+export default RedirectPage;
