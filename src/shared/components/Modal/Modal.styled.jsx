@@ -16,9 +16,9 @@ export const BackDrop = styled.div`
 
 export const ModalWrapper = styled.div`
   position: relative;
-  padding: 48px;
-
-  min-width: 400px;
+  padding: 48px 24px;
+  min-width: 100%;
+  width: 400px;
   min-height: 200px;
 
   background-color: #fdf9f6;
