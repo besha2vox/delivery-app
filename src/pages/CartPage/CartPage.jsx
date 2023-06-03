@@ -13,6 +13,7 @@ import {
 import Loader from 'shared/components/Loader/Loader';
 import Modal from 'shared/components/Modal/Modal';
 import OrderModal from 'shared/components/OrderModal/OrderModal';
+import NotValidModal from 'shared/components/NotValidModal/NotValidModal';
 import CartList from 'shared/components/CartList';
 import OrderedForm from 'shared/components/OrderedForm/OrderedForm';
 import OrderSubmit from 'shared/components/OrderSubmit/OrderSubmit';
@@ -20,6 +21,7 @@ import { CartForm, FormWrapper, EmptyCartText } from './CartPage.styled';
 
 const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [error, setError] = useState({});
   const orderedQuantity = useSelector(selectOrderedQuantity);
   const orderlist = useSelector(selectCartList);
   const totalPrice = useSelector(selectOrderPrice);
@@ -27,9 +29,16 @@ const CartPage = () => {
   const isLoading = useSelector(selectIsOrderLoading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const isValid = Object.values(error).every(value => !value);
+  console.log({ isValid });
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (!isValid) {
+      setIsModalOpen(true);
+      return;
+    }
+
     const order = orderlist.filter(
       ({ orderedQuantity }) => orderedQuantity > 0
     );
@@ -38,9 +47,13 @@ const CartPage = () => {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
+  const closeModalAndRedirect = () => {
     setIsModalOpen(false);
     navigate('/');
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -48,7 +61,7 @@ const CartPage = () => {
       {orderedQuantity ? (
         <CartForm onSubmit={handleSubmit}>
           <FormWrapper>
-            <OrderedForm />
+            <OrderedForm setError={setError} />
             <CartList />
           </FormWrapper>
           <OrderSubmit />
@@ -57,9 +70,14 @@ const CartPage = () => {
         <EmptyCartText>Ваш кошик пустий</EmptyCartText>
       )}
       {isLoading && <Loader />}
-      {!isLoading && isModalOpen && (
-        <Modal handleClick={closeModal}>
+      {!isLoading && isModalOpen && isValid && (
+        <Modal handleClick={closeModalAndRedirect}>
           <OrderModal />
+        </Modal>
+      )}
+      {!isLoading && isModalOpen && !isValid && (
+        <Modal handleClick={closeModal}>
+          <NotValidModal errors={error} />
         </Modal>
       )}
     </>

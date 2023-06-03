@@ -3,13 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeUserInfo } from 'redux/cart/operations';
 import { selectUserInfo } from 'redux/cart/selectors';
 
+import { validateField } from 'shared/service/validateUser';
+
 import {
   UserInfoWrapper,
   UserInfoLabel,
   UserInfoInput,
 } from './OrderedForm.styled';
 
-const OrderedForm = () => {
+const OrderedForm = ({ setError }) => {
   const initialValues = useSelector(selectUserInfo);
   const [values, setValues] = useState(initialValues);
   const dispatch = useDispatch();
@@ -18,6 +20,10 @@ const OrderedForm = () => {
     const [name, value] = [e.target.name, e.target.value];
     setValues(prevState => ({ ...prevState, [name]: value }));
     dispatch(changeUserInfo(values));
+  };
+
+  const handleBlur = async field => {
+    await validateField(field, values, setError);
   };
 
   return (
@@ -30,6 +36,7 @@ const OrderedForm = () => {
           value={values.name}
           placeholder="Сергій"
           onChange={handleChange}
+          onBlur={() => handleBlur('name')}
         />
       </UserInfoLabel>
       <UserInfoLabel>
@@ -40,6 +47,7 @@ const OrderedForm = () => {
           value={values.email}
           placeholder="example@mail.com"
           onChange={handleChange}
+          onBlur={() => handleBlur('email')}
         />
       </UserInfoLabel>
       <UserInfoLabel>
@@ -50,6 +58,7 @@ const OrderedForm = () => {
           value={values.phone}
           placeholder="+3800000000000"
           onChange={handleChange}
+          onBlur={() => handleBlur('phone')}
         />
       </UserInfoLabel>
       <UserInfoLabel>
@@ -60,6 +69,7 @@ const OrderedForm = () => {
           value={values.address}
           placeholder="Дніпро, вул. Січеславська Набережна, 31/2"
           onChange={handleChange}
+          onBlur={() => handleBlur('address')}
         />
       </UserInfoLabel>
     </UserInfoWrapper>
