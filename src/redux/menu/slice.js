@@ -25,13 +25,13 @@ const menuSlice = createSlice({
         state.totalHints = payload.totalHints;
       })
       .addCase(getByCategory.fulfilled, (state, { payload }) => {
+        state.page = Number(payload.page);
         if (state.page > 1) {
           state.items = [...state.items, ...payload.menu];
         } else {
           state.items = payload.menu;
         }
         state.totalHints = payload.totalHints;
-        state.page = Number(payload.page);
       })
       .addCase(getById.fulfilled, (state, { payload }) => {
         state.currentDish = payload;
