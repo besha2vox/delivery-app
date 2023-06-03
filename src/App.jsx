@@ -17,7 +17,7 @@ const App = () => {
         <Route index element={<RedirectPage />} />
         <Route path="shop" element={<Shops />}>
           <Route index element={<Advertising />} />
-          <Route path=":shopId" element={<Menu />}>
+          <Route path=":shopId/" element={<Menu />}>
             <Route path=":category" element={<DishList />} />
           </Route>
         </Route>

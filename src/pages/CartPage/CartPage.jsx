@@ -13,7 +13,6 @@ import {
 import Loader from 'shared/components/Loader/Loader';
 import Modal from 'shared/components/Modal/Modal';
 import OrderModal from 'shared/components/OrderModal/OrderModal';
-import Title from 'shared/components/Title/Title';
 import CartList from 'shared/components/CartList';
 import OrderedForm from 'shared/components/OrderedForm/OrderedForm';
 import OrderSubmit from 'shared/components/OrderSubmit/OrderSubmit';
@@ -46,7 +45,6 @@ const CartPage = () => {
 
   return (
     <>
-      <Title title="Кошик" />
       {orderedQuantity ? (
         <CartForm onSubmit={handleSubmit}>
           <FormWrapper>

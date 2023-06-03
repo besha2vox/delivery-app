@@ -3,15 +3,20 @@ import styled from 'styled-components';
 export const UserInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 24px;
-
-  width: calc(50% - 12px);
-  height: 100%;
+  padding: 12px;
+  gap: 8px;
 
   box-shadow: rgba(46, 46, 46, 0.14) 3px -3px 14px,
     rgba(46, 46, 46, 0.14) -3px 3px 14px;
   border-radius: 30px;
+
+  @media screen and (min-width: 768px) {
+    gap: 12px;
+    padding: 24px;
+
+    width: calc(50% - 12px);
+    height: 100%;
+  }
 `;
 
 export const UserInfoLabel = styled.label`
@@ -19,7 +24,9 @@ export const UserInfoLabel = styled.label`
   flex-direction: column;
   gap: 8px;
 
-  font-size: 20px;
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const UserInfoInput = styled.input`

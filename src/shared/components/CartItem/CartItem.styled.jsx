@@ -1,18 +1,25 @@
 import styled from 'styled-components';
 
 export const OrderItem = styled.li`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  padding: 24px 12px;
+  gap: 12px;
+  padding: 12px;
+
   width: 100%;
   border: 1px solid #2e2e2e50;
-  border-radius: 40px;
+  border-radius: 30px;
 
-  & img {
-    max-width: 100px;
-    border-radius: 40px;
+  @media screen and (min-width: 768px) {
+    gap: 20px;
+    padding: 24px 12px;
+
+    & img {
+      max-width: 100px;
+      border-radius: 30px;
+    }
   }
 `;
 
@@ -55,8 +62,10 @@ export const RemoveButton = styled.button`
 `;
 
 export const OrderedQuantityInput = styled.input`
-  width: 200px;
   padding: 4px 12px;
+
+  width: 100%;
+  max-width: 200px;
   text-align: center;
 
   border: 1px solid #2e2e2e50;

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { removeFromCart, changeOrderedQuantity } from 'redux/cart/operations';
 
 import { ReactComponent as TrashIcon } from '../../../images/trash-delete-svgrepo-com.svg';
@@ -14,7 +14,19 @@ import {
 
 const CartItem = ({ _id, name, orderedQuantity, price, image }) => {
   const [quntity, setQuantity] = useState(orderedQuantity);
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleRemove = id => dispatch(removeFromCart(id));
   const handleChange = e => {
@@ -26,7 +38,7 @@ const CartItem = ({ _id, name, orderedQuantity, price, image }) => {
 
   return (
     <OrderItem>
-      <img src={image} alt={name} />
+      {viewportWidth >= 768 && <img src={image} alt={name} />}
       <OrderInfoWrapper>
         <p>{name}</p>
         <p>Ціна: {price * orderedQuantity}₴</p>

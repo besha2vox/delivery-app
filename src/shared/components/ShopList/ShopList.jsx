@@ -28,7 +28,7 @@ const ShopList = ({ setIsDropDawnOpen }) => {
     <>
       {!!shops && (
         <ShopsList>
-          {shops.map(({ name, logo, _id }) => (
+          {shops.map(({ name, logo, _id, categories }) => (
             <ShopItem key={_id}>
               <ButtonImage
                 handleClicler={() => setIsDropDawnOpen(false)}
