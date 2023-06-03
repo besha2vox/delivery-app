@@ -4,10 +4,10 @@ export const DishListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  width: 100%;
+  width: 80%;
   overflow: auto;
+  padding: 0 12px;
   @media screen and (min-width: 768px) {
-    margin-left: 12px;
   }
 
   &::-webkit-scrollbar {
@@ -27,7 +27,7 @@ export const DishItem = styled.li`
   padding-bottom: 8px;
   gap: 8px;
   width: 100%;
-  border-radius: 40px;
+  border-radius: 30px;
   box-shadow: 2px 2px 7px rgba(116, 177, 232, 0.24);
   text-align: center;
   background-color: #fff;
@@ -39,6 +39,8 @@ export const DishItem = styled.li`
 `;
 
 export const DishTitle = styled.h3`
+  padding: 0 4px;
+  font-size: 16px;
   @media screen and (min-width: 768px) {
     flex-grow: 1;
   }
@@ -49,4 +51,5 @@ export const PriceWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  padding: 0 4px;
 `;

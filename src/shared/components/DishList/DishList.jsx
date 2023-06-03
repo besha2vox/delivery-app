@@ -47,7 +47,7 @@ const DishList = () => {
         {menu.map(({ _id, name, description, image, price, shop }) => (
           <DishItem key={_id}>
             <div>
-              <img src={image} alt={name} />
+              <img loading="lasy" src={image} alt={name} />
             </div>
             <DishTitle>{name}</DishTitle>
             <PriceWrapper>
