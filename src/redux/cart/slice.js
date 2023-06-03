@@ -54,6 +54,7 @@ const cartSlice = createSlice({
         state.error = null;
         state.order = payload;
         state.items = [];
+        state.currentShop = null;
       })
       .addCase(makeOrder.rejected, (state, { payload }) => {
         state.isLoading = false;

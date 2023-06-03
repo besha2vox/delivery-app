@@ -15,10 +15,13 @@ export const BackDrop = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
+  @media screen and (max-width: 767px) {
+    min-width: 100%;
+  }
   position: relative;
   padding: 48px 24px;
-  min-width: 100%;
-  width: 400px;
+
+  min-width: 400px;
   min-height: 200px;
 
   background-color: #fdf9f6;
