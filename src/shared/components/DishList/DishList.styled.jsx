@@ -1,13 +1,22 @@
 import styled from 'styled-components';
 
-export const DishListStyled = styled.ul`
+export const DishListWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
+  padding: 8px;
+  align-items: center;
+
   width: 80%;
   height: fit-content;
   max-height: 100%;
   overflow: auto;
+`;
+
+export const DishListStyled = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   padding: 0 12px;
   @media screen and (min-width: 768px) {
   }

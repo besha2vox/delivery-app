@@ -31,7 +31,6 @@ const CartItem = ({ _id, name, orderedQuantity, price, image }) => {
   const handleRemove = id => dispatch(removeFromCart(id));
   const handleChange = e => {
     const value = Number(e.target.value);
-    console.log(typeof value);
     setQuantity(value);
     dispatch(changeOrderedQuantity({ _id, orderedQuantity: value }));
   };
