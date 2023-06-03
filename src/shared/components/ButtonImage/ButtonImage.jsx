@@ -8,9 +8,18 @@ const ButtonImage = ({
   name,
   handleClicler,
   isNameShow = true,
+  isDisabled = false,
 }) => {
+  const handleClick = event => {
+    if (isDisabled) {
+      event.preventDefault();
+      return;
+    }
+    handleClicler();
+  };
+
   return (
-    <ImageNavLink to={path} onClick={handleClicler}>
+    <ImageNavLink to={path} onClick={handleClick} disabled={isDisabled}>
       <img src={logo} alt={name} />
       {isNameShow && <h3>{name}</h3>}
     </ImageNavLink>
@@ -23,6 +32,7 @@ ButtonImage.propTypes = {
   path: PropTypes.string.isRequired,
   handleClicler: PropTypes.func,
   isNameShow: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 export default ButtonImage;

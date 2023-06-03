@@ -12,6 +12,7 @@ const userInitialValue = { name: '', phone: '', email: '', address: '' };
 const initialState = {
   items: [],
   userInfo: userInitialValue,
+  currentShop: null,
   order: null,
   isLoading: false,
   error: null,
@@ -29,6 +30,7 @@ const cartSlice = createSlice({
           return;
         }
         state.items.push({ ...payload, orderedQuantity: 1 });
+        state.currentShop = payload.shop;
       })
       .addCase(changeOrderedQuantity, (state, { payload }) => {
         const indx = state.items.findIndex(({ _id }) => _id === payload._id);
@@ -37,6 +39,9 @@ const cartSlice = createSlice({
       .addCase(removeFromCart, (state, { payload }) => {
         const indx = state.items.findIndex(({ _id }) => _id === payload);
         state.items.splice(indx, 1);
+        if (state.items.length < 1) {
+          state.currentShop = null;
+        }
       })
       .addCase(changeUserInfo, (state, { payload }) => {
         state.userInfo = payload;

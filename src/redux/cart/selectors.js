@@ -17,3 +17,5 @@ export const selectUserInfo = state => state.cart.userInfo;
 export const selectIsOrderLoading = state => state.cart.isLoading;
 
 export const selectOrderList = state => state.cart.order;
+
+export const selectCurrentShop = state => state.cart.currentShop;

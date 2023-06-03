@@ -7,6 +7,7 @@ import {
   selectAllShops,
   selectShopIsLoading,
 } from '../../../redux/shops/selectors';
+import { selectCurrentShop } from 'redux/cart/selectors';
 
 import Loader from '../Loader/Loader';
 import ButtonImage from '../ButtonImage/ButtonImage';
@@ -14,14 +15,14 @@ import { ShopsList, ShopItem } from './ShopList.styled';
 
 const ShopList = ({ setIsDropDawnOpen }) => {
   const shops = useSelector(selectAllShops);
+  const currentShop = useSelector(selectCurrentShop);
   const isLoading = useSelector(selectShopIsLoading);
   const dispatch = useDispatch();
 
+  console.log({ currentShop });
+
   useEffect(() => {
-    const getShopList = async () => {
-      await dispatch(getShops());
-    };
-    getShopList();
+    dispatch(getShops());
   }, [dispatch]);
 
   return (
@@ -32,6 +33,7 @@ const ShopList = ({ setIsDropDawnOpen }) => {
             <ShopItem key={_id}>
               <ButtonImage
                 handleClicler={() => setIsDropDawnOpen(false)}
+                isDisabled={currentShop !== _id && currentShop !== null}
                 path={_id}
                 name={name}
                 logo={logo}

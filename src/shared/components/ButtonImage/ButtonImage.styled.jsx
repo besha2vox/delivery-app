@@ -29,4 +29,7 @@ export const ImageNavLink = styled(NavLink)`
     max-height: 40px;
     border-radius: 50%;
   }
+
+  background-color: ${({ isDisabled, disabled }) =>
+    disabled ? '#2e2e2e60' : 'inherit'};
 `;

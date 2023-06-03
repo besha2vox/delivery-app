@@ -25,7 +25,7 @@ const middleware = [
 const cartPersistConfig = {
   key: 'cart',
   storage,
-  whitelist: ['items', 'userInfo', 'order'],
+  whitelist: ['items', 'userInfo', 'order', 'currentShop'],
 };
 
 export const store = configureStore({

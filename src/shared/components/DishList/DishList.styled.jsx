@@ -6,6 +6,7 @@ export const DishListStyled = styled.ul`
   gap: 12px;
   width: 80%;
   height: fit-content;
+  max-height: 100%;
   overflow: auto;
   padding: 0 12px;
   @media screen and (min-width: 768px) {
