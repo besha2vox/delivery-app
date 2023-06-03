@@ -34,7 +34,7 @@ const MenuList = () => {
 
   useEffect(() => {
     if (!category && !isLoading) {
-      setPath(shop.categories[0].name);
+      setPath(shop?.categories[0].name);
       navigate(path);
     }
   }, [category, isLoading, navigate, path, shop?.categories]);
